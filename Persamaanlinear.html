@@ -23,30 +23,32 @@
         }
         nav {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             background-color: #77eb80;
         }
         nav a {
             color: white;
-            padding: 14px 20px;
+            padding: 10px 15px;
             text-decoration: none;
             text-align: center;
+            font-size: 14px;
         }
         nav a:hover {
             background-color: #ddd;
             color: black;
         }
         .container {
-            max-width: 800px;
+            max-width: 90%;
             margin: 20px auto;
-            padding: 20px;
+            padding: 15px;
             background: rgba(255, 255, 255, 0.9); /* Transparan */
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         .image-container {
             text-align: center;
-            margin: 20px 0;
+            margin: 15px 0;
         }
         .image-container img {
             max-width: 100%;
@@ -59,6 +61,23 @@
             padding: 10px 0;
             background-color: rgba(76, 175, 80, 0.8);
             color: white;
+        }
+
+        /* Media Query untuk Layar Kecil */
+        @media (max-width: 600px) {
+            nav a {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+            header h1 {
+                font-size: 20px;
+            }
+            .container h2 {
+                font-size: 18px;
+            }
+            footer {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -74,8 +93,8 @@
     <a href="Contoh.html">Contoh Soal</a>
     <a href="kuis.html">Kuis</a>
     <a href="soalpersamaan.html">Soal Latihan</a>
-    
 </nav>
+
 <div class="container">
     <h2>Persamaan Linear Dua Variabel</h2>
     <p>Eduardus Jurman</p>
@@ -83,8 +102,6 @@
     <div class="image-container">
         <img src="pexels-photo-5212320.jpeg" alt="Contoh Gambar">
     </div>
-    
-    
 </div>
 
 <footer>
