@@ -85,6 +85,14 @@
             font-size: 1.2em;
         }
 
+        #details {
+            margin-top: 20px;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
         #restart {
             display: none;
             margin-top: 10px;
@@ -102,6 +110,7 @@
     </div>
 
     <h2 id="result" style="display:none;"></h2>
+    <div id="details" style="display:none;"></div>
     <input type="button" id="restart" value="Mulai Lagi" style="display:none;" onclick="restartQuiz()">
 
     <script>
@@ -133,6 +142,10 @@
             }
         ];
 
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = [];
+
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -142,9 +155,6 @@
 
         shuffle(questions);
         questions.forEach(q => shuffle(q.options));
-
-        let currentQuestionIndex = 0;
-        let score = 0;
 
         function loadQuestion() {
             const question = questions[currentQuestionIndex];
@@ -161,7 +171,16 @@
         function submitAnswer() {
             const selectedOption = document.querySelector('input[name="answer"]:checked');
             if (selectedOption) {
-                if (selectedOption.value === questions[currentQuestionIndex].answer) {
+                const userAnswer = selectedOption.value;
+                const correctAnswer = questions[currentQuestionIndex].answer;
+                userAnswers.push({
+                    question: questions[currentQuestionIndex].question,
+                    userAnswer: userAnswer,
+                    correctAnswer: correctAnswer,
+                    isCorrect: userAnswer === correctAnswer
+                });
+
+                if (userAnswer === correctAnswer) {
                     score++;
                 }
                 currentQuestionIndex++;
@@ -177,21 +196,31 @@
 
         function showResult() {
             document.getElementById('quiz-container').style.display = 'none';
-            const resultText = score === questions.length ?
-                `Selamat! Anda menjawab semua pertanyaan dengan benar!` :
-                `Anda menjawab ${score} dari ${questions.length} dengan benar.`;
-            document.getElementById('result').innerText = resultText;
+            document.getElementById('result').innerText = `Anda menjawab ${score} dari ${questions.length} dengan benar.`;
             document.getElementById('result').style.display = 'block';
+
+            const details = document.getElementById('details');
+            details.innerHTML = userAnswers.map(answer => `
+                <p>
+                    <strong>${answer.question}</strong><br>
+                    Jawaban Anda: ${answer.userAnswer} (${answer.isCorrect ? 'Benar' : 'Salah'})<br>
+                    Jawaban Benar: ${answer.correctAnswer}
+                </p>
+            `).join('');
+            details.style.display = 'block';
+
             document.getElementById('restart').style.display = 'block';
         }
 
         function restartQuiz() {
             currentQuestionIndex = 0;
             score = 0;
+            userAnswers = [];
             shuffle(questions);
             questions.forEach(q => shuffle(q.options));
             document.getElementById('quiz-container').style.display = 'block';
             document.getElementById('result').style.display = 'none';
+            document.getElementById('details').style.display = 'none';
             document.getElementById('restart').style.display = 'none';
             loadQuestion();
         }
