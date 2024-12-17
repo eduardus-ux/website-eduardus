@@ -11,6 +11,7 @@
             margin: 0;
             padding: 20px;
         }
+
         header {
             background-color: #4CAF50;
             color: white;
@@ -18,6 +19,7 @@
             text-align: center;
             border-radius: 5px;
         }
+
         section {
             background-color: white;
             padding: 20px;
@@ -25,44 +27,131 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
+
         h2 {
             color: #4CAF50;
         }
+
         h3 {
             color: #333;
         }
+
         ul {
             line-height: 1.6;
         }
+
         .example {
             background-color: #e7f3fe;
             border-left: 6px solid #2196F3;
             padding: 10px;
             margin: 20px 0;
         }
+
         iframe {
             max-width: 100%;
             height: auto;
             border: 0;
         }
+
         footer {
             text-align: center;
             margin-top: 20px;
             font-size: 0.9em;
             color: #777;
         }
+
         @media (max-width: 600px) {
             body {
                 padding: 10px;
             }
+
             header {
                 font-size: 1.2em;
             }
         }
+ /* Kode untuk Navbar */
+ body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            cursor: pointer;
+        }
+        .menu-icon div {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar ul li {
+            padding: 10px 20px;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            display: block;
+            transition: color 0.3s;
+        }
+        .navbar ul li a:hover {
+            color: #474744;
+        }
+        .navbar ul.active {
+            display: flex;
+        }
+        .menu-title {
+            font-size: 18px;
+            color: rgb(221, 194, 194);
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+            
     </style>
 </head>
 <body>
 
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <ul id="menu">
+        <li ><a href="Persamaanlinear.html">Home</a></li>
+        <li><a href="Contoh.html">Contoh Soal</a></li>
+        <li><a href="kuis.html">Kuis</a></li>
+        <li><a href="soalpersamaan.html">Soal Latihan</a></li>
+    </ul>
+</nav>
 <header>
     <h1>Materi Kelas 8: Persamaan Linear Dua Variabel</h1>
 </header>
@@ -70,7 +159,7 @@
 <section>
     <p>Video Persamaan Linear Dua Variabel:</p>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/tdXn25OcV0g?si=_iPts9kDyzuKjyjH" title="YouTube video player" allowfullscreen></iframe>
-    
+
     <h2>Pengertian</h2>
     <p>
         Persamaan linear dua variabel adalah persamaan yang memiliki bentuk umum:
@@ -82,20 +171,20 @@
         <li><strong>A</strong>, <strong>B</strong>, dan <strong>C</strong> adalah bilangan real.</li>
         <li>Persamaan ini menggambarkan garis lurus pada bidang koordinat.</li>
     </ul>
-    
+
     <h2>Bentuk Umum</h2>
     <p>Contoh bentuk persamaan linear dua variabel:</p>
     <div class="example">
         <p>2x + 3y = 6</p>
     </div>
-    
+
     <h2>Grafik Persamaan Linear</h2>
     <p>Untuk menggambar grafik persamaan linear, kita perlu menentukan titik potong dengan sumbu x dan y:</p>
     <ul>
         <li>Titik potong sumbu x: Set y = 0 dan cari x.</li>
         <li>Titik potong sumbu y: Set x = 0 dan cari y.</li>
     </ul>
-    
+
     <h3>Contoh</h3>
     <div class="example">
         <p>Untuk persamaan <strong>2x + 3y = 6</strong>:</p>
@@ -104,7 +193,7 @@
             <li>Jika x = 0: <strong>3y = 6 → y = 2</strong> (Titik potong y: (0, 2))</li>
         </ul>
     </div>
-    
+
     <h2>Menyelesaikan Persamaan Linear Dua Variabel</h2>
     <p>Untuk menyelesaikan sistem persamaan linear dua variabel, kita bisa menggunakan metode:</p>
     <ul>
@@ -112,7 +201,7 @@
         <li>Metode eliminasi</li>
         <li>Metode grafik</li>
     </ul>
-    
+
     <h2>Contoh Soal</h2>
     <p>Berikut adalah contoh soal untuk latihan:</p>
     <div class="example">
@@ -127,6 +216,13 @@
 <footer>
     <p>&copy; 2024 Materi Matematika Kelas 8</p>
 </footer>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
+    }
+</script>
 
 </body>
 </html>
