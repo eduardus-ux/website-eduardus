@@ -88,11 +88,11 @@
 </header>
 
 <nav>
-    <a href="#home">Eduardus</a>
     <a href="per2var.html">Materi</a>
     <a href="Contoh.html">Contoh Soal</a>
     <a href="kuis.html">Kuis</a>
     <a href="soalpersamaan.html">Soal Latihan</a>
+    <a href="biodata.html">Tentang</a>
 </nav>
 
 <div class="container">
